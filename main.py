@@ -1,4 +1,4 @@
-''' Ejercicio 1
+""" Ejercicio 1
     Enunciado: Imprime todos los ficheros existentes en tu carpeta de Descargas.
     Objetivo:
         - Aprender a utilizar librerías sencillas (en este caso, os) y sus funciones.
@@ -10,23 +10,33 @@
         - Recorre todos los resultados obtenidos por la función anterior. Lo puedes hacer, por ejemplo,
         con un bucle for.
         - Imprime por pantalla solo aquellos resultados que sean ficheros (para ello también
-        necesitas una función existente en os. '''
+        necesitas una función existente en os.
+
+    Ampliación:
+        - Lista los tamaños de los ficheros en formato humano.
+        - Recorre de manera recursiva todos los directorios desde tu carpeta personal
+            y muestra los ficheros de cada directorio y su tamaño.
+"""
 
 import os
 
+
 def listarFicheros_Y_Directorios(ruta):
     contenido = os.listdir(ruta)
-    '''
+    """
     print("El contenido total del directorio es: ")
     for campo in contenido:
         print(campo)
     print("\n")
-    '''
+    """
 
     print("Mostramos solamente los ficheros (sin directorios): \n")
     for campo in contenido:
-        if os.path.isfile(ruta+'\\'+campo):
-            print(campo)
+        if os.path.isfile(ruta + '\\' + campo):
+            volumen = str(round((os.path.getsize(ruta + '\\' + campo) / 1024), 2) + 'Mb.')
+            # Devolvemos los archivos y su tamaño (convertido en String)
+            print(campo+": " + volumen)
+
 
 if __name__ == "__main__":
     ruta = input("Introduce la ruta completa. (Ejemplo --> C:\Misdocumentos\example): \n")
