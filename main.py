@@ -17,7 +17,7 @@
         - Recorre de manera recursiva todos los directorios desde tu carpeta personal
             y muestra los ficheros de cada directorio y su tamaño.
 """
-
+# Radilo86
 import os
 
 
