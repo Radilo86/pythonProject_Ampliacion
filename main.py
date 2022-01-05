@@ -20,23 +20,31 @@
 # Radilo86
 import os
 
-
 def listarFicheros_Y_Directorios(ruta):
-    contenido = os.listdir(ruta)
     """
+    contenido = os.listdir(ruta)
     print("El contenido total del directorio es: ")
     for campo in contenido:
         print(campo)
     print("\n")
-    """
 
-    print("Mostramos solamente los ficheros (sin directorios): \n")
+    print("\nMostramos solamente los ficheros (sin directorios): ")
     for campo in contenido:
         if os.path.isfile(ruta + '\\' + campo):
-            # Obtenemos el tamaño y lo convertimos de bytes a Megabytes, redondeado a 2 decimales.
-            volumen = str(round((os.path.getsize(ruta + '\\' + campo) / 1024), 2))
-            # Devolvemos los archivos y su tamaño (convertido en String)
-            print("Archivo: " + campo + " --> tamaño: " + volumen + "Mb.")
+            Obtenemos el tamaño y lo convertimos de bytes a Megabytes, redondeado a 2 decimales.
+            volumen = str(round((os.path.getsize(ruta + '\\' + campo) / 1024), 2))+"Mb."
+            Devolvemos los archivos y su tamaño (convertido en String)
+            print("Archivo: " + campo + " --> tamaño: " + volumen)
+
+    print("\n\n\n")
+    """
+
+    print("Mostramos de manera recursiva los directorios de mi carpeta personal:")
+    for directorios, dirs, ficheros in os.walk(ruta):
+        print(directorios)
+        for nombreFichero in ficheros:
+            volumen = str(round((os.path.getsize(directorios + '\\' + nombreFichero) / 1024), 2)) + "Mb."
+            print("\t" + "Archivo: " + nombreFichero + " --> " + volumen)
 
 
 if __name__ == "__main__":
