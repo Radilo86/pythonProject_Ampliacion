@@ -16,6 +16,11 @@
         - Lista los tamaños de los ficheros en formato humano.
         - Recorre de manera recursiva todos los directorios desde tu carpeta personal
             y muestra los ficheros de cada directorio y su tamaño.
+
+    Recursos:
+        - https://programmerclick.com/article/37631961492/
+        - https://j2logo.com/python/listar-directorio-forma-recursiva-python/
+        - https://programmerclick.com/article/2958959393/
 """
 # Radilo86
 import os
@@ -40,8 +45,12 @@ def listarFicheros_Y_Directorios(ruta):
     """
 
     print("Mostramos de manera recursiva los directorios de mi carpeta personal:")
+    #  devuelve tres valores: el nombre de la ruta completa del directorio actual,
+    #   la lista de directorios del directorio actual y la lista de ficheros del directorio actual.
     for directorios, dirs, ficheros in os.walk(ruta):
         print(directorios)
+        for carpetas in dirs:
+            print("\t" + "Carpeta: " + carpetas)
         for nombreFichero in ficheros:
             volumen = str(round((os.path.getsize(directorios + '\\' + nombreFichero) / 1024), 2)) + "Mb."
             print("\t" + "Archivo: " + nombreFichero + " --> " + volumen)
