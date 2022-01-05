@@ -33,9 +33,10 @@ def listarFicheros_Y_Directorios(ruta):
     print("Mostramos solamente los ficheros (sin directorios): \n")
     for campo in contenido:
         if os.path.isfile(ruta + '\\' + campo):
-            volumen = str(round((os.path.getsize(ruta + '\\' + campo) / 1024), 2) + 'Mb.')
+            # Obtenemos el tamaño y lo convertimos de bytes a Megabytes, redondeado a 2 decimales.
+            volumen = str(round((os.path.getsize(ruta + '\\' + campo) / 1024), 2))
             # Devolvemos los archivos y su tamaño (convertido en String)
-            print(campo+": " + volumen)
+            print("Archivo: " + campo + " --> tamaño: " + volumen + "Mb.")
 
 
 if __name__ == "__main__":
