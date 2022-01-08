@@ -24,6 +24,7 @@
 """
 # Radilo86
 import os
+import humanize
 
 def listarFicheros_Y_Directorios(ruta):
     """
@@ -52,9 +53,8 @@ def listarFicheros_Y_Directorios(ruta):
         for carpetas in dirs:
             print("\t" + "Carpeta: " + carpetas)
         for nombreFichero in ficheros:
-            volumen = str(round((os.path.getsize(directorios + '\\' + nombreFichero) / 1024), 2)) + "Mb."
+            volumen = str(humanize.naturalsize(os.path.getsize(directorios + '\\' + nombreFichero)))
             print("\t" + "Archivo: " + nombreFichero + " --> " + volumen)
-
 
 if __name__ == "__main__":
     ruta = input("Introduce la ruta completa. (Ejemplo --> C:\Misdocumentos\example): \n")
